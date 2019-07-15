@@ -1,0 +1,66 @@
+body {
+  color: #454545;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #454545;
+  height: 150px;
+  padding: 40px 20px 20px  20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+.jumbotron {
+  background: url(./images/hero_banner.jpg) no-repeat;
+  height: auto;
+  width: 100%;
+}
+.coachImage {
+  background: url(./images/profile.png) no-repeat;
+  height: 250px;
+  width: 250px;
+}
+ul {
+
+  display: table;
+  width: 100%;
+  list-style: none;
+}
+li {
+  list-style-type: none;
+  display: inline-block;
+  display: table-cell;
+  text-align: center;
+}
+.coachName {
+  height: 250px;
+  line-height: 270px;
+}
+.coachingField {
+  padding-top: 100px;
+}
+.fields {
+  margin: 20px;
+}
+.inputLabel {
+  width: 150px;
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 639px) {
+  .nav li {
+    display: block;
+  }
+}
