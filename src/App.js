@@ -3,6 +3,7 @@ import { HashRouter as Router } from "react-router-dom";
 import Route from "react-router-dom/Route";
 import "./App.css";
 import firebase from "firebase";
+import Signupnavigation from "./components/Signupnavigation";
 import Navigation from "./components/navigation";
 import Banner from "./components/banner";
 import Coaches from "./components/coaches";
@@ -12,7 +13,7 @@ import About from "./components/about";
 import Aboutacoach from "./components/about-a-coach";
 import Addacoach from "./components/add-a-coach";
 import Contactus from "./components/contactus";
-import Header from "./Header";
+import Header from "./components/Header";
 
 class App extends Component {
   constructor() {
@@ -25,6 +26,7 @@ class App extends Component {
       .child("id");
 
     this.state = {
+      user: null,
       coaches: [],
       location: "Tauranga"
     };
@@ -94,13 +96,14 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-            <div className="container">
+            <Signupnavigation user={this.state.user}/>
+              <div className="container">
               <header className="blog-header py-3">
-                  <Header />
+                  <Header user={this.state.user}/>
               </header>
               <Navigation />
               <Banner />
-       
+
               <Route
                         path="/"
                         exact
@@ -108,14 +111,14 @@ class App extends Component {
                         render={() => (
                           <div>
                           {/*{this.state.name} - {this.state.sport} - {this.state.hrlyRate} - {this.state.location}*/}
-                           <Coaches coaches={this.state.coaches} />
+                           <Coaches coaches={this.state.coaches}  />
                       </div>
-                        
+
                         )}
             />
-            
+
             <Route path="/about" exact strict render={() => <About />} />
-            
+
             <Route
                         path="/about-a-coach"
                         exact
@@ -136,7 +139,7 @@ class App extends Component {
               render={() => (<Contactus />)}
         />
         </div>
-        
+
                   </div>
       </Router>
     );

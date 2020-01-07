@@ -4,7 +4,7 @@ import CoachItem from './coachItem';
 
 class Coaches extends Component {
 
-  
+
 
   render() {
 
