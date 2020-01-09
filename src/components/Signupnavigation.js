@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { FaUsers } from 'react-icons/fa';
+import { FaUsers, FaSearch } from 'react-icons/fa';
 import { Link } from '@reach/router';
 
 class Signupnavigation extends Component {
@@ -10,19 +10,32 @@ class Signupnavigation extends Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <div className="navbar-nav ml-auto">
+            <Link to="/home" className="nav-item nav-link p-2" >
+              Home
+            </Link>
+            <Link to="/about" className="nav-item nav-link p-2" >
+              About
+            </Link>
+              <Link to="/addacoach" className="nav-item nav-link p-2">
+                Add a Coach
+              </Link>
 
-            {user == null && (
+              <Link to="/contactus" className="nav-item nav-link p-2">
+                Contact us
+              </Link>
+
+            {!user && (
               <span className="signup">
-              <Link className="nav-item nav-link active" to="/login">
+              <Link className="nav-item nav-link" to="/login">
                 Log in
               </Link>
-              <Link className="nav-item nav-link active" to="/add-a-coach">
-                Register
-              </Link>
+              <Link className="nav-item nav-link" to="/add-a-coach">
+                Register <FaSearch className="ml-1"/>
+               </Link>
               </span>
             )}
             {user && (
-              <Link className="nav-item nav-link active" to="/logout">
+              <Link className="nav-item nav-link " to="/logout">
                 Log out
               </Link>
             )}

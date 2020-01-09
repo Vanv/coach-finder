@@ -11,12 +11,13 @@ class Header extends Component {
     <div>
     <div className="row flex-nowrap justify-content-between align-items-center">
       <div className="col-4 pt-1 text-left">
+      <a className="blog-header-logo text-dark" href="#">
+        <img src={logo} alt="Coach Finder" />
+      </a>
         {/*<a className="text-muted" href="#">Subscribe</a>*/}
       </div>
       <div className="col-4 text-center">
-        <a className="blog-header-logo text-dark" href="#">
-          <img src={logo} alt="Coach Finder" />
-        </a>
+
       </div>
       <div className="col-4 d-flex justify-content-end align-items-center">
       {user && (

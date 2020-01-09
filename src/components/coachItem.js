@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import profile from './profile.png'
+// import profile from './profile.png';
 
 
 class CoachItem extends Component {
