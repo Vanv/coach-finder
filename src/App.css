@@ -1,9 +1,9 @@
 body {
   color: #454545;
 }
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -20,9 +20,30 @@ body {
 .App-intro {
   font-size: large;
 }
+.bannerImage {
+    display: block;
+}
+
+.bannerImage-text {
+    position: relative;
+    display: inline-block;
+}
+
+.bannerText {
+
+  background: rgba(69, 69, 69, 0.5);
+  padding: 0px 20px;
+    position: absolute;
+    top: 95%;
+    left: 52%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
 .jumbotron {
-  background: url(./images/hero_banner.jpg) no-repeat;
-  height: auto;
+  background: url(./images/hero_banner2.jpg) no-repeat;
+
   width: 100%;
 }
 .coachImage {
@@ -55,6 +76,12 @@ li {
 .inputLabel {
   width: 150px;
 }
+nav.top-nav-bg {
+  background-color: #01233f !important;
+}
+.top-nav {
+  width: 100%;
+}
 .signup {
   display: inline-flex;
 }
@@ -63,6 +90,9 @@ li {
 }
 .navbar-nav a:hover {
   text-decoration: underline;
+}
+.jumbotron {
+  margin-bottom: 0px !important;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

@@ -21,7 +21,6 @@ class Coaches extends Component {
 
     return (
         <div>
-        <h3>Coaches</h3>
           {coachItems}
         </div>
 

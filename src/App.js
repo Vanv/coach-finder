@@ -8,16 +8,17 @@ import "./App.css";
 import Home from "./components/Home";
 import Signupnavigation from "./components/Signupnavigation";
 import Navigation from "./components/Navigation";
-import Banner from "./components/banner";
 import Coaches from "./components/coaches";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { dbConfig } from "./Config";
 import About from "./components/About";
 import Aboutacoach from "./components/Aboutacoach";
-import Addacoach from "./components/Addacoach";
+import Register from "./components/Register";
 import Contactus from "./components/Contactus";
 import Header from "./components/Header";
 import Login from "./components/Login";
+import Banner from "./components/banner";
+
 
 class App extends Component {
   constructor() {
@@ -110,18 +111,34 @@ class App extends Component {
 
         <div className="App">
             <Signupnavigation user={this.state.user}/>
+            <Router>
+
+              <Home
+                        path="/"
+                        exact
+                        strict
+                        render={() => (
+                          <div>
+                          {/*{this.state.name} - {this.state.sport} - {this.state.hrlyRate} - {this.state.location}*/}
+                           <Home />
+                      </div>
+
+                        )}
+            />
+
+
+
+            </Router>
               <div className="container">
-              <header className="blog-header py-3">
+              {/*<header className="blog-header py-3">
                   <Header user={this.state.user}/>
               </header>
-              {/*<Navigation user={this.state.user} /> */}
-              <Banner />
-              {this.state.user}
+              <Navigation user={this.state.user} /> */}
+
 
               <Router>
-                <Home path="/home" />
                 <About path="/about" />
-                <Addacoach path="/addacoach" />
+                <Register path="/register" />
                 <Login path="login" />
                 <Contactus path="/contactus" />
               </Router>

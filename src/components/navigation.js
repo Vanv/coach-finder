@@ -6,7 +6,7 @@ import About from './About';
 import Aboutacoach from './Aboutacoach';
 
 import Contactus from './Contactus';
-import Addacoach from './Addacoach';
+import Register from './Register';
 
 class Navigation extends Component {
 
@@ -31,11 +31,11 @@ class Navigation extends Component {
                     </Link>
                   </li>
                   <li>
-                      <Link to="/addacoach" className="nav-item nav-link p-2">
-                        Add a Coach
+                      <Link to="/register" className="nav-item nav-link p-2">
+                        Register
                       </Link>
                   </li>
-            
+
                   <li>
                       <Link to="/contactus" className="nav-item nav-link p-2">
                         Contact us
