@@ -14,10 +14,11 @@ class Navigation extends Component {
             <img src={logo} alt="Coach Finder" />
           </a>
           <div className="navbar-nav ml-auto">
-
-            <span className="text-white pl-1 pt-2 px-2">
-              Welcome {userName},
-            </span>
+            {user && (
+              <span className="text-white pl-1 pt-2 px-2">
+                Welcome {userName},
+              </span>
+            )}
             <Link to="/about" className="nav-item nav-link p-2" >
               About
             </Link>
