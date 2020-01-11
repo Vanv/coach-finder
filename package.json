@@ -1,5 +1,6 @@
 {
   "name": "coach-finder",
+  "homepage": "http://webimpact.co.nz/react/coach-finder/",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

@@ -5,11 +5,11 @@ import firebase from './Firebase';
 
 class Register extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state = {
-      firstName: '',
+      displayName: '',
       lastName: '',
       email: '',
       password: '',
@@ -17,6 +17,8 @@ class Register extends Component {
       sport1: '',
       sport2: '',
       sport3: '',
+      location:'',
+      otherAreas: '',
       hrlyRate: '',
       errorMessage: null
     }
@@ -39,14 +41,16 @@ class Register extends Component {
   }
 
   handleSubmit(e) {
-    let registrationInfo = {
-      firstName: this.state.firstName,
+    var registrationInfo = {
+      displayName: this.state.displayName,
       lastName: this.state.lastName,
       email: this.state.email,
       password: this.state.password,
       sport1: this.state.sport1,
       sport2: this.state.sport2,
       sport3: this.state.sport3,
+      location: this.state.location,
+      otherAreas: this.state.otherAreas,
       hrlyRate: this.state.hrlyRate,
     }
     e.preventDefault();
@@ -55,7 +59,11 @@ class Register extends Component {
       .createUserWithEmailAndPassword(
       registrationInfo.email,
       registrationInfo.password
-    ).catch(error => {
+    ).then(() => {
+      this.props.registerUser(registrationInfo.displayName);
+    })
+
+    .catch(error => {
       if(error.message !== null ) {
         this.setState({errorMessage: error.message});
       } else {
@@ -70,11 +78,8 @@ class Register extends Component {
         <form className="mt-3" onSubmit={this.handleSubmit}>
           <div className="container-fluid">
             <div className="row justify-content-center">
-
               <div className="col-lg-12 bg-dark mt-4 mb-4">
-              <h3 className="d-block p-2 bg-dark text-white">Register as a Coach</h3>
-
-                <h3 className="font-weight-light  text-white"></h3>
+                <h3 className="d-block p-2 bg-dark text-white">Register as a Coach</h3>
               </div>
             </div>
             { (this.state.errorMessage !== null) ? (
@@ -91,18 +96,18 @@ class Register extends Component {
                       <section className="col-sm-12 form-group">
                         <label
                           className="form-control-label sr-only"
-                          htmlFor="firstName"
+                          htmlFor="displayName"
                         >
-                          First Name
+                          Display Name
                         </label>
                         <input
                           className="form-control"
                           type="text"
-                          id="firstName"
-                          placeholder="First Name"
-                          name="firstName"
+                          id="displayName"
+                          placeholder="Display Name"
+                          name="displayName"
                           required
-                          value={this.state.value}
+                          value={this.state.displayName}
                           onChange={this.handleChange}
                         />
                       </section>
@@ -123,7 +128,7 @@ class Register extends Component {
                           placeholder="Last Name"
                           name="lastName"
                           required
-                          value={this.state.value}
+                          value={this.state.lastName}
                           onChange={this.handleChange}
 
                         />
@@ -166,7 +171,7 @@ class Register extends Component {
                       <section className="col-sm-12 form-group">
                         <input
                           className="form-control"
-                          type="confirmPassword"
+                          type="password"
                           name="confirmPassword"
                           placeholder="Confirm Password"
                           value={this.state.confirmPassword}
@@ -219,8 +224,41 @@ class Register extends Component {
                           type="text"
                           id="sport3"
                           placeholder="Sport 3"
-                          
+
                           name="sport3"
+                          value={this.state.value}
+                          onChange={this.handleChange}
+                          />
+                        </section>
+                    </div>
+                    <div className="form-row">
+                      <section className="col-sm-12 form-group">
+                        <label className="form-control-label sr-only" htmlFor="sprot3">
+                          Location of your Coaching Base
+                        </label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="location"
+                          placeholder="Location"
+
+                          name="sport3"
+                          value={this.state.value}
+                          onChange={this.handleChange}
+                          />
+                        </section>
+                    </div>
+                    <div className="form-row">
+                      <section className="col-sm-12 form-group">
+                        <label className="form-control-label sr-only" htmlFor="sprot3">
+                          Other areas available for Coaching
+                        </label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="otherAreas"
+                          placeholder="Other Areas"
+                          name="otherAreas"
                           value={this.state.value}
                           onChange={this.handleChange}
                           />
@@ -244,7 +282,7 @@ class Register extends Component {
                         </section>
                     </div>
                     <div className="form-group text-right mb-0 mt-4">
-                      <button className="btn btn-primary" type="submit">
+                      <button className="btn btn-light" type="submit">
                         Register
                       </button>
                     </div>
@@ -252,31 +290,6 @@ class Register extends Component {
                 </div>
               </div>
             </div>
-
-            {/*<div className="fields">
-
-                <span className="inputLabel"> Name:</span> <input className="form-control" type="text" value="Name"/>
-            </div>
-            <div  className="fields">
-                <span className="inputLabel">Sports 1:</span> <input className="form-control" type="text" value="Name of the sport1"/>
-            </div>
-            <div className="fields">
-                <span className="inputLabel">Sports 2:</span> <input className="form-control" type="text" value="Name of the sport2"/>
-            </div>
-            <div className="fields">
-                <span className="inputLabel">Sports 3:</span> <input className="form-control" type="text" value="Name of the sport3"/>
-            </div>
-            <div className="fields">
-                <span className="inputLabel">Email:</span> <input className="form-control" type="text" value="email"/>
-            </div>
-            <div className="fields">
-                <span className="inputLabel">Mobile:</span> <input className="form-control" type="text" value=""/>
-            </div>
-
-             <div className="fields">
-                <input type="submit" className="btn btn-primary btn-lg" value="Submit"/>
-            </div>
-            */}
         </div>
         </form>
     );

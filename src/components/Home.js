@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import Banner from './banner';
 import Coaches from './coaches';
-
+import { Link } from '@reach/router';
 
 class Home extends Component {
   constructor(props) {
-    super();
+    super(props);
   }
   componentWillMount() {
     this.setState({
@@ -41,6 +41,7 @@ class Home extends Component {
     });
   }
   render() {
+    const { user } = this.props;
     return (
       <div>
         <Banner />

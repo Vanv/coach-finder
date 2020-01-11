@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import { HashRouter as Router } from "react-router-dom";
 //import Route from "react-router-dom/Route";
-import {Router} from '@reach/router';
+import {Router, navigate} from '@reach/router';
 import firebase from "./components/Firebase";
 
 import "./App.css";
@@ -18,131 +18,95 @@ import Contactus from "./components/Contactus";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Banner from "./components/banner";
-
+import Welcome from './components/Welcome';
+import Meetings from './components/Meetings';
 
 class App extends Component {
   constructor() {
     super();
-    //this.app = firebase.initializeApp(dbConfig);
-    // this.database = this.app
-    //   .database()
-    //   .ref()
-    //   .child("coaches")
-    //   .child("id");
-
     this.state = {
-
-      coaches: [],
-      location: "Tauranga"
+      user: null,
+      displayName: null,
+      userID: null
     };
   }
 
   componentDidMount() {
+    firebase.auth().onAuthStateChanged( FBUser => {
+      if(FBUser) {
+        this.setState({
+          user: FBUser,
+          displayName: FBUser.displayName,
+          userID: FBUser.uid
+        })
+      }
+    })
 
-    const ref = firebase.database().ref('user');
-    ref.on('value', snapshot => {
-      let FBUser = snapshot.val();
-      this.setState({ user: FBUser });
-    });
   }
 
-  componentWillMount() {
-    this.setState({
-      coaches: [
-        {
-          id: 1,
-          name: "Micheal Douglas",
-          sport: "Badminton",
-          hrlyRate: "$60"
-        },
-        {
-          id: 2,
-          name: "Mike Row",
-          sport: "Soccer",
-          hrlyRate: "$50"
-        },
-        {
-          id: 3,
-          name: "Edwin Loss",
-          sport: "Soccer",
-          hrlyRate: "$50"
-        },
-        {
-          id: 4,
-          name: "Peter Baker",
-          sport: "Badminton",
-          hrlyRate: "$55"
-        }
-      ]
+  registerUser = userName => {
+    firebase.auth().onAuthStateChanged(FBUser => {
+      FBUser.updateProfile({
+        displayName: userName
+      }).then(() => {
+        this.setState({
+          user: FBUser,
+          displayName: FBUser.displayName,
+          userID: FBUser.uid
+        });
+        navigate('/meetings');
+      });
     });
+  };
+  logOutUser = e => {
+    e.preventDefault();
     this.setState({
-      location: "Rotorua"
+      displayName: null,
+      userID: null,
+      user: null
     });
-  }
 
-//  componentDidMount() {
-    // this.database.on("value", snap => {
-    //   const coachuser = snap.val();
-    //   this.setState({
-    //     name: coachuser.name,
-    //     sport: coachuser.sport,
-    //     location: coachuser.location,
-    //     hrlyRate: coachuser.hrlyRate
-    //   });
-    // });
-    // firebasePlaces.child(this.props.placeId).on("value", snap => {
-    //     this.setState({
-    //         Place: snap.val()
-    //     })
-    // })
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        navigate('/login');
+      });
+  };
 
-    // const RootRef = firebase.database().ref().child('location');
-    // const locationRef = RootRef.child('location');
-    // console.log("Location tef", locationRef);
-    // locationRef.on('value', snap => {
-    //   this.setState({
-    //     location: snap.val()
-    //   })
-    // })
-//  }
 
   render() {
     return (
 
         <div className="App">
-            <Signupnavigation user={this.state.user}/>
-            <Router>
-
-              <Home
-                        path="/"
-                        exact
-                        strict
-                        render={() => (
-                          <div>
-                          {/*{this.state.name} - {this.state.sport} - {this.state.hrlyRate} - {this.state.location}*/}
-                           <Home />
-                      </div>
-
-                        )}
-            />
-
-
-
-            </Router>
-              <div className="container">
-              {/*<header className="blog-header py-3">
-                  <Header user={this.state.user}/>
-              </header>
-              <Navigation user={this.state.user} /> */}
-
-
+        <Navigation
+          user={this.state.user}
+          userName={this.state.displayName}
+          logOutUser={this.logOutUser}
+        />
+        {/*
+        {this.state.user && (
+          <Welcome
+            userName={this.state.displayName}
+            logOutUser={this.logOutUser}
+          />
+        )}
+        */}
               <Router>
-                <About path="/about" />
-                <Register path="/register" />
-                <Login path="login" />
-                <Contactus path="/contactus" />
+                <Home path="/"  user={this.state.user}/>
               </Router>
-            </div>
+              <div className="container">
+
+                <Router>
+                  <About path="/about" />
+                  <Meetings path="/meetings" />
+                  <Register
+                    path="/register"
+                    registerUser={this.registerUser} />
+                  <Login path="login" />
+                  <Contactus path="/contactus" />
+                </Router>
+              </div>
 
                   </div>
 

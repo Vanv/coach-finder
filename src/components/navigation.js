@@ -1,71 +1,58 @@
-//navigation.js
 import React, { Component } from 'react';
-// import {NavLink} from 'react-router-dom';
+import { FaUsers } from 'react-icons/fa';
 import { Link } from '@reach/router';
-import About from './About';
-import Aboutacoach from './Aboutacoach';
-
-import Contactus from './Contactus';
-import Register from './Register';
+import logo from '../images/logo-new.png';
 
 class Navigation extends Component {
+  render() {
+    const { user, userName, logOutUser } = this.props;
 
-  render(){
-    const { user, logOutUser } = this.props;
     return (
-    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark top-nav-bg">
+        <div className="container">
+          <a className="blog-header-logo text-dark" href="/">
+            <img src={logo} alt="Coach Finder" />
+          </a>
+          <div className="navbar-nav ml-auto">
 
-           <div className="nav-scroller py-1 mb-2">
-              <nav className="nav d-flex justify-content-between">
-              <div className="navbar-nav ml-auto">
+            <span className="text-white pl-1 pt-2 px-2">
+              Welcome {userName},
+            </span>
+            <Link to="/about" className="nav-item nav-link p-2" >
+              About
+            </Link>
+            <Link to="/contactus" className="nav-item nav-link p-2">
+                Contact us
+              </Link>
+              {user && (
+                <Link className="nav-item nav-link" to="/meetings">
+                  meetings
+                </Link>
+              )}
+              {!user && (
+                <Link className="nav-item nav-link" to="/login">
+                  log in
+                </Link>
+              )}
+              {!user && (
+                <Link className="nav-item nav-link" to="/register">
+                  register
+                </Link>
+              )}
+              {user && (
+                <Link
+                  className="nav-item nav-link"
+                  to="/login"
+                  onClick={e => logOutUser(e)}
+                >
+                  log out
+                </Link>
+              )}
 
-                <ul>
-                  <li>
-                    <Link to="/home" className="nav-item nav-link p-2 text-muted" >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/about" className="nav-item nav-link p-2" >
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                      <Link to="/register" className="nav-item nav-link p-2">
-                        Register
-                      </Link>
-                  </li>
-
-                  <li>
-                      <Link to="/contactus" className="nav-item nav-link p-2">
-                        Contact us
-                      </Link>
-                  </li>
-                </ul>
-              </div>
-                {/*<ul>
-                  <li>
-                  <NavLink to="/" exact strict className="p-2 text-muted" activeStyle={{color: 'green'}} >Home</NavLink>
-                  </li>
-                  <li>
-                  <NavLink to="/add-a-coach" className="p-2 text-muted" component={<Addacoach />} >Add a Coach</NavLink>
-                  </li>
-                  <li>
-                  <NavLink to="/about" exact className="p-2 text-muted" activeStyle={{color: 'green'}} >About Us</NavLink>
-                  </li>
-                  <li>
-                  <NavLink to="/Aboutacoach" className="p-2 text-muted" component={<Aboutacoach />} >About a Coach</NavLink>
-                  </li>
-
-                  <li>
-                  <NavLink to="/contactus" className="p-2 text-muted" component={<Contactus />} >Contact us</NavLink>
-                  </li>
-                </ul>
-                */}
-              </nav>
+          </div>
         </div>
-    </div>
-    )
+      </nav>
+    );
   }
 }
 
