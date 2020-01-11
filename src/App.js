@@ -20,6 +20,7 @@ import Login from "./components/Login";
 import Banner from "./components/banner";
 import Welcome from './components/Welcome';
 import Meetings from './components/Meetings';
+import AddCoach from './components/AddCoach';
 
 class App extends Component {
   constructor() {
@@ -54,7 +55,7 @@ class App extends Component {
           displayName: FBUser.displayName,
           userID: FBUser.uid
         });
-        navigate('/meetings');
+        navigate('/addCoach');
       });
     });
   };
@@ -74,6 +75,20 @@ class App extends Component {
       });
   };
 
+  addCoach = (sport1,sport1HrlyRate, sport2, sport2HrlyRate, location, otherAreas, shortDescription) => {
+    const ref = firebase
+    .database()
+    .ref(`addcoach/${this.state.user.uid}`);
+    ref.push({
+      sport1: sport1,
+      sport1HrlyRate: sport1HrlyRate,
+      sport2: sport2,
+      sport2HrlyRate: sport2HrlyRate,
+      location: location,
+      otherAreas: otherAreas,
+      shortDescription: shortDescription
+    });
+  }
 
   render() {
     return (
@@ -99,7 +114,9 @@ class App extends Component {
 
                 <Router>
                   <About path="/about" />
-                  <Meetings path="/meetings" />
+                  <AddCoach path="/addCoach"
+                      addCoach={this.addCoach}
+                  />
                   <Register
                     path="/register"
                     registerUser={this.registerUser} />

@@ -39,7 +39,7 @@ class Login extends Component {
       registrationInfo.password
     )
     .then(() => {
-      navigate('/meetings');
+      navigate('/addCoach');
     })
     .catch(error => {
       if(error.message !== null ) {

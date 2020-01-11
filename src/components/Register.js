@@ -192,7 +192,7 @@ class Register extends Component {
                         placeholder="Sport 1"
                         required
                         name="sport1"
-                        value={this.state.value}
+                        value={this.state.sprot1}
                         onChange={this.handleChange}
                         />
                         </section>
@@ -209,7 +209,7 @@ class Register extends Component {
                         placeholder="Sport 2"
 
                         name="sport2"
-                        value={this.state.value}
+                        value={this.state.sport2}
                         onChange={this.handleChange}
                         />
                         </section>
@@ -226,7 +226,7 @@ class Register extends Component {
                           placeholder="Sport 3"
 
                           name="sport3"
-                          value={this.state.value}
+                          value={this.state.sport3}
                           onChange={this.handleChange}
                           />
                         </section>
@@ -243,7 +243,7 @@ class Register extends Component {
                           placeholder="Location"
 
                           name="sport3"
-                          value={this.state.value}
+                          value={this.state.location}
                           onChange={this.handleChange}
                           />
                         </section>
@@ -259,7 +259,7 @@ class Register extends Component {
                           id="otherAreas"
                           placeholder="Other Areas"
                           name="otherAreas"
-                          value={this.state.value}
+                          value={this.state.otherAreas}
                           onChange={this.handleChange}
                           />
                         </section>
@@ -276,7 +276,7 @@ class Register extends Component {
                           placeholder="Hourly Rate"
                           required
                           name="hrlyRate"
-                          value={this.state.value}
+                          value={this.state.hrlyRate}
                           onChange={this.handleChange}
                           />
                         </section>

@@ -26,8 +26,8 @@ class Navigation extends Component {
                 Contact us
               </Link>
               {user && (
-                <Link className="nav-item nav-link" to="/meetings">
-                  meetings
+                <Link className="nav-item nav-link" to="/addCoach">
+                  Add Coach
                 </Link>
               )}
               {!user && (
