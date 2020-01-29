@@ -26,13 +26,12 @@ body {
 
 .bannerImage-text {
     position: relative;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .bannerText {
-
-  background: rgba(69, 69, 69, 0.5);
-  padding: 0px 20px;
+    background: rgba(69, 69, 69, 0.5);
+    padding: 0px 20px;
     position: absolute;
     top: 95%;
     left: 52%;
@@ -40,11 +39,6 @@ body {
     text-align: center;
     color: white;
     font-weight: bold;
-}
-.jumbotron {
-  background: url(./images/hero_banner2.jpg) no-repeat;
-
-  width: 100%;
 }
 .coachImage {
   background: url(./images/profile.png) no-repeat;
@@ -63,12 +57,17 @@ li {
   display: table-cell;
   text-align: center;
 }
+.home-container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 .coachName {
   height: 250px;
   line-height: 270px;
 }
 .coachingField {
   padding-top: 100px;
+  padding-left: 50px;
 }
 .fields {
   margin: 20px;
@@ -102,4 +101,18 @@ nav.top-nav-bg {
   .nav li {
     display: block;
   }
+}
+
+.footer {
+  backgroundColor: "purple";
+ fontSize: "20px";
+ color: "white";
+ borderTop: "1px solid #01233f";
+ textAlign: "center";
+ padding: "20px";
+ position: "fixed";
+ left: "0";
+ bottom: "0";
+ height: "60px";
+ width: "100%";
 }

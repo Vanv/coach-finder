@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import FormError from './FormError';
-import firebase from './Firebase';
+import addCoachHeader from "../images/add-coach.jpg";
+import CoachesList from './CoachesList';
+
 
 
 class AddCoach extends Component {
@@ -55,13 +57,12 @@ class AddCoach extends Component {
 
 
     return (
-        <form className="mt-3" onSubmit={this.handleSubmit}>
+      <div>
+        <div>
+          <img className="bannerImage" src={addCoachHeader} alt="Coach Finder" width="100%" />
+        </div>
+        <form className="mt-5" onSubmit={this.handleSubmit}>
           <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className="col-lg-12 bg-dark mt-4 mb-4">
-                <h3 className="d-block p-2 bg-dark text-white">Add Coach</h3>
-              </div>
-            </div>
             { (this.state.errorMessage !== null) ? (
               <FormError theMessage={this.state.errorMessage}/>
             ) : null}
@@ -70,17 +71,16 @@ class AddCoach extends Component {
               <div className="col-lg-8">
                 <div className="card text-white bg-dark mb-3">
                   <div className="card-body">
-
+                    <h3 className="font-weight-light mb-3">Add Coach</h3>
                     <div className="form-row">
                       <section className="col-sm-12 form-group">
                         <label className="form-control-label" htmlFor="sport1">
-                          Sport 1
+                          Sport 1 (Eg: Badminton, Tennis or Cricket)
                         </label>
                         <input
                           className="form-control"
                           type="text"
                           id="sport1"
-                          placeholder="Badminton, Tennis or Cricket"
                           required
                           name="sport1"
                           value={this.state.sport1}
@@ -91,13 +91,12 @@ class AddCoach extends Component {
                     <div className="form-row">
                       <section className="col-sm-12 form-group">
                         <label className="form-control-label" htmlFor="sport1HrlyRate">
-                          Sport 1 Hourly Rate
+                          Sport 1 Hourly Rate (Eg: 50, 60 or 70)
                         </label><br />
                         <input
                           className="form-control"
                           type="text"
                           id="sport1HrlyRate"
-                          placeholder="50, 60 or 70"
                           name="sport1HrlyRate"
                           value={this.state.sport1HrlyRate}
                           onChange={this.handleChange}
@@ -107,13 +106,12 @@ class AddCoach extends Component {
                     <div className="form-row">
                       <section className="col-sm-12 form-group">
                         <label className="form-control-label" htmlFor="sport2">
-                          Sport 2
+                          Sport 2 (Eg: Squash, Netball or Rugby)
                         </label>
                         <input
                           className="form-control"
                           type="text"
                           id="sport2"
-                          placeholder="Squash, Netball or Rugby"
                           name="sport2"
                           value={this.state.sport2}
                           onChange={this.handleChange}
@@ -130,7 +128,6 @@ class AddCoach extends Component {
                           className="form-control"
                           type="text"
                           id="sport2HrlyRate"
-                          placeholder="Sport 2 Hourly Rate"
                           name="sport2HrlyRate"
                           value={this.state.sport2HrlyRate}
                           onChange={this.handleChange}
@@ -146,7 +143,6 @@ class AddCoach extends Component {
                           className="form-control"
                           type="text"
                           id="location"
-                          placeholder="Location"
                           name="location"
                           value={this.state.location}
                           onChange={this.handleChange}
@@ -162,7 +158,6 @@ class AddCoach extends Component {
                           className="form-control"
                           type="text"
                           id="otherAreas"
-                          placeholder="Other Areas"
                           name="otherAreas"
                           value={this.state.otherAreas}
                           onChange={this.handleChange}
@@ -178,7 +173,6 @@ class AddCoach extends Component {
                           className="form-control"
                           type="text"
                           id="shortDescription"
-                          placeholder="Breif desctiption about you"
                           required
                           name="shortDescription"
                           value={this.state.shortDescription}
@@ -196,7 +190,21 @@ class AddCoach extends Component {
               </div>
             </div>
         </div>
-        </form>
+      </form>
+      {this.props.coaches && this.props.coaches.length ? (
+        <div>
+        Coaches List
+        </div>
+      ): null}
+      {this.props.coaches && (
+          <div>
+              <CoachesList
+                userID={this.props.userID}
+                coaches={this.props.coaches} />
+          </div>
+        )
+      }
+    </div>
     );
   }
 }

@@ -10,7 +10,7 @@ import Signupnavigation from "./components/Signupnavigation";
 import Navigation from "./components/Navigation";
 import Coaches from "./components/coaches";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { dbConfig } from "./Config";
+import { dbConfig } from "./Config";
 import About from "./components/About";
 import Aboutacoach from "./components/Aboutacoach";
 import Register from "./components/Register";
@@ -21,29 +21,36 @@ import Banner from "./components/banner";
 import Welcome from './components/Welcome';
 import Meetings from './components/Meetings';
 import AddCoach from './components/AddCoach';
+import Footer from './components/Footer';
+
 
 class App extends Component {
   constructor() {
     super();
+
+
     this.state = {
       user: null,
       displayName: null,
-      userID: null
+      userID: null,
+      coachesList: [],
+      displayCoaches: [],
+      sport1: ''
     };
   }
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged( FBUser => {
-      if(FBUser) {
-        this.setState({
-          user: FBUser,
-          displayName: FBUser.displayName,
-          userID: FBUser.uid
-        })
-      }
-    })
 
-  }
+  componentDidMount() {
+      const ref = firebase.database().ref('addcoach')
+
+      ref.orderByChild('sport1').on('child_added', snapshot => {
+        this.state.coachesList.push({
+          id: snapshot.key,
+          sport1: snapshot.val().sport1,
+
+        });
+      });
+    }
 
   registerUser = userName => {
     firebase.auth().onAuthStateChanged(FBUser => {
@@ -93,39 +100,50 @@ class App extends Component {
   render() {
     return (
 
-        <div className="App">
-        <Navigation
-          user={this.state.user}
-          userName={this.state.displayName}
-          logOutUser={this.logOutUser}
-        />
-        {/*
-        {this.state.user && (
-          <Welcome
-            userName={this.state.displayName}
-            logOutUser={this.logOutUser}
-          />
-        )}
-        */}
-              <Router>
-                <Home path="/"  user={this.state.user}/>
-              </Router>
-              <div className="container">
 
-                <Router>
-                  <About path="/about" />
-                  <AddCoach path="/addCoach"
-                      addCoach={this.addCoach}
-                  />
-                  <Register
-                    path="/register"
-                    registerUser={this.registerUser} />
-                  <Login path="login" />
-                  <Contactus path="/contactus" />
-                </Router>
-              </div>
+          <div className="container-fluid px-0">
+              <Navigation
+                user={this.state.user}
+                userName={this.state.displayName}
+                logOutUser={this.logOutUser}
+              />
+              {/*
+              {this.state.user && (
+                <Welcome
+                  userName={this.state.displayName}
+                  logOutUser={this.logOutUser}
+                />
+              )}
+              */}
+              {this.sport1 }
 
-                  </div>
+                    <Router>
+                      <Home path="/"
+
+                        user={this.state.user}
+                      />
+
+                    </Router>
+                    <div className="container-fluid home-container">
+
+                      <Router>
+                        <About path="/about" />
+                        <AddCoach path="/addCoach"
+                            addCoach={this.addCoach}
+                            coaches={this.state.coaches}
+                            userID={this.state.userID}
+
+                        />
+                        <Register
+                          path="/register"
+                          registerUser={this.registerUser} />
+                        <Login path="login" />
+                        <Contactus path="/contactus" />
+                      </Router>
+                    </div>
+                    <Footer />
+
+            </div>
 
     );
   }

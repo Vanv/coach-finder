@@ -14,13 +14,12 @@ class Coaches extends Component {
        coachItems = this.props.coaches.map(coach => {
          return(
           <CoachItem key={coach.id} coach={coach} />
-
          );
        });
      }
 
     return (
-        <div>
+        <div className="mb-5">
           {coachItems}
         </div>
 

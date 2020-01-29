@@ -2,10 +2,15 @@ import React, {Component} from 'react';
 import Banner from './banner';
 import Coaches from './coaches';
 import { Link } from '@reach/router';
+import CoachesList from './CoachesList';
 
 class Home extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      sport1: ''
+    }
   }
   componentWillMount() {
     this.setState({
@@ -43,9 +48,10 @@ class Home extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div>
+      <div className="mb-5">
         <Banner />
-        <Coaches coaches={this.state.coaches}  />
+        {/*<Coaches coaches={this.state.coaches}  /> */}
+        
       </div>
     );
   }

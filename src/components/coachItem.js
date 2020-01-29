@@ -6,16 +6,17 @@ class CoachItem extends Component {
   render() {
     //console.log(this.props);
     return(
-      <div>
+      <div className="pb-5">
       <section>
         <div className="container">
           <div className="row">
+
             <div className="col-md-4 coachImage">
             </div>
             <div className="col-md-4 coachName">
-            <li className="CoachItem">
-              <b>{this.props.coach.name}</b>
-            </li>
+              <li className="CoachItem">
+                <b>{this.props.coach.name}</b>
+              </li>
             </div>
             <div className="col-md-4 coachingField">
               <b>Coaching Sport: </b> <br/>
