@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //import Route from "react-router-dom/Route";
-import {Router, navigate} from '@reach/router';
+import {navigate} from '@reach/router';
 import firebase from "./config/Firebase";
 
 import "./App.css";
@@ -10,10 +10,11 @@ import Dashboard from './components/dashboard/Dashboard';
 import CaoachDetails from './components/coaches/CoachDetails';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Navigation from "./components/layout/Navigation";
+import AddCoach from './components/coaches/AddCoach';
 
 
-import Signupnavigation from "./components/Signupnavigation";
-import Navigation from "./components/Navigation";
+
 import Coaches from "./components/coaches";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { dbConfig } from "./Config";
@@ -21,10 +22,8 @@ import About from "./components/About";
 import Aboutacoach from "./components/Aboutacoach";
 import Contactus from "./components/Contactus";
 import Header from "./components/Header";
-import Banner from "./components/banner";
 import Welcome from './components/Welcome';
 import Meetings from './components/Meetings';
-import AddCoach from './components/AddCoach';
 import Footer from './components/Footer';
 
 
@@ -104,9 +103,9 @@ class App extends Component {
   render() {
     return (
 
-
+<BrowserRouter>
           <div className="container-fluid px-0">
-              <Navigation
+             <Navigation
                 user={this.state.user}
                 userName={this.state.displayName}
                 logOutUser={this.logOutUser}
@@ -119,9 +118,7 @@ class App extends Component {
                 />
               )}
               */}
-              {this.sport1 }
-
-
+              {/*
                     <Router>
                       <Home path="/"
 
@@ -129,10 +126,10 @@ class App extends Component {
                       />
 
                     </Router>
+                  */}
                     <div className="container-fluid home-container">
-
+                    {/*
                       <Router>
-                        <About path="/about" />
                         <AddCoach path="/addCoach"
                             addCoach={this.addCoach}
                             coaches={this.state.coaches}
@@ -142,20 +139,23 @@ class App extends Component {
                         <Register
                           path="/register"
                           registerUser={this.registerUser} />
-                        <Contactus path="/contactus" />
                       </Router>
-                      <BrowserRouter>
+                      */}
+
                         <Switch>
                           <Route exact path='/' component={Dashboard} />
                           <Route path='/coach/:id' component={CaoachDetails} />
                           <Route path='/login' component={Login} />
-
+                          <Route path='/register' component={Register} />
+                          <Route path='/addCoach' component={AddCoach} />
+                          <Route path='/about' component={About} />
+                          <Route path='/contactus' component={Contactus} />
                         </Switch>
-                      </BrowserRouter>
                     </div>
                     <Footer />
 
             </div>
+            </BrowserRouter>
 
     );
   }

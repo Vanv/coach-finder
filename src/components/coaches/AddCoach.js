@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import FormError from './FormError';
-import addCoachHeader from "../images/add-coach.jpg";
-import CoachesList from './CoachesList';
+import FormError from '../FormError';
+import addCoachHeader from "../../images/add-coach.jpg";
+import CoachesList from '../CoachesList';
 
 
 
 class AddCoach extends Component {
 
-  constructor(props){
-    super(props);
-
-    this.state = {
+  state = {
       sport1: '',
       sport1HrlyRate: '',
       sport2: '',
@@ -19,22 +16,21 @@ class AddCoach extends Component {
       otherAreas: '',
       shortDescription: '',
       errorMessage: null
-    }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    const itemName = e.target.name;
-    const itemValue = e.target.value;
-
-    this.setState({[itemName]: itemValue});
+  handleChange = (e) => {
+    // const itemName = e.target.name;
+    // const itemValue = e.target.value;
+    // this.setState({[itemName]: itemValue});
+    this.setState({
+      [e.target.id]: e.target.value
+    })
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addCoach(
+    console.log(this.state);
+  {/*  this.props.addCoach(
       this.state.sport1,
       this.state.sport1HrlyRate,
       this.state.sport2,
@@ -52,6 +48,7 @@ class AddCoach extends Component {
       otherAreas:'',
       shortDescription: ''
     });
+    */}
   }
   render() {
 

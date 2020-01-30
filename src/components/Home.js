@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Banner from './banner';
 import Coaches from './coaches';
 import { Link } from '@reach/router';
 import CoachesList from './CoachesList';
@@ -49,9 +48,9 @@ class Home extends Component {
     const { user } = this.props;
     return (
       <div className="mb-5">
-        <Banner />
+
         {/*<Coaches coaches={this.state.coaches}  /> */}
-        
+
       </div>
     );
   }

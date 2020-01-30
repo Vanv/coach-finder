@@ -35,33 +35,72 @@ class Register extends Component {
                 <div className="col-lg-8">
                   <div className="card text-white bg-dark">
                     <div className="card-body">
-                      <h3 className="font-weight-light mb-3">Log in</h3>
-                      <section className="form-group">
-                        {this.state.errorMessage !== null ? (
-                          <FormError
-                            theMessage={this.state.errorMessage}
-                          />
-                        ) : null}
+                    <div className="form-row">
+                      <h3 className="font-weight-light mb-3">Register</h3>
+                      <section className="col-sm-12 form-group">
                         <label
                           className="form-control-label sr-only"
-                          htmlFor="Email"
+                          htmlFor="displayName"
                         >
-                          Email
+                          First Name
                         </label>
                         <input
-                          required
                           className="form-control"
-                          type="email"
-                          id="email"
-                          name="email"
-                          placeholder="Email"
-                          value={this.state.email}
+                          type="text"
+                          id="displayName"
+                          placeholder="First Name"
+                          name="displayName"
+                          required
+                          value={this.state.displayName}
                           onChange={this.handleChange}
                         />
                       </section>
-                      <section className="form-group">
+                    </div>
+                    <div className="form-row">
+
+                      <section className="col-sm-12 form-group">
+                        <label
+                          className="form-control-label sr-only"
+                          htmlFor="lastName"
+                        >
+                          Last Name
+                        </label>
                         <input
+                          className="form-control"
+                          type="text"
+                          id="lastName"
+                          placeholder="Last Name"
+                          name="lastName"
                           required
+                          value={this.state.lastName}
+                          onChange={this.handleChange}
+
+                        />
+                      </section>
+                    </div>
+                    <div className="form-row">
+                    <section className="col-sm-12 form-group">
+                      <label
+                        className="form-control-label sr-only"
+                        htmlFor="email"
+                      >
+                        Email
+                      </label>
+                      <input
+                        className="form-control"
+                        type="email"
+                        id="email"
+                        placeholder="Email Address"
+                        required
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                      />
+                    </section>
+                    </div>
+                    <div className="form-row">
+                      <section className="col-sm-12 form-group">
+                        <input
                           className="form-control"
                           type="password"
                           id="password"
@@ -71,11 +110,27 @@ class Register extends Component {
                           onChange={this.handleChange}
                         />
                       </section>
-                      <div className="form-group text-right mb-0">
-                        <button className="btn btn-primary" type="submit">
-                          Log in
-                        </button>
-                      </div>
+
+                    </div>
+                    <div className="form-row">
+                      <section className="col-sm-12 form-group">
+                        <input
+                          className="form-control"
+                          type="password"
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          placeholder="Confirm Password"
+                          value={this.state.confirmPassword}
+                          onChange={this.handleChange}
+                        />
+                      </section>
+                    </div>
+
+                    <div className="form-group text-right mb-0 mt-4">
+                      <button className="btn btn-light" type="submit">
+                        Register
+                      </button>
+                    </div>
                     </div>
                   </div>
                 </div>

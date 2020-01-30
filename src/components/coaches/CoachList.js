@@ -1,27 +1,14 @@
 import React, { Component } from 'react'
+import CoachSummary from './CoachSummary'
 
-
-const CoachList = () => {
+const CoachList = ({coaches}) => {
   return (
-    <div>
-      <div className="card w-100 mb-5">
-        <div className="card-body">
-          <h5 className="card-title">Coach1 Name</h5>
-          <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-      <div className="card w-100 mb-5">
-        <div className="card-body">
-          <h5 className="card-title">Coach2 Name</h5>
-          <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-      <div className="card w-100 mb-5">
-        <div className="card-body">
-          <h5 className="card-title">Coach3 Name</h5>
-          <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
+    <div className="section">
+      { coaches && coaches.map(coach => {
+        return (
+          <CoachSummary coach={coach} key={coach.id} />
+        )
+      })}
     </div>
   )
 }

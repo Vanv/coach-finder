@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 import { FaUsers } from 'react-icons/fa';
 import { Link } from '@reach/router';
-import logo from '../images/logo-new.png';
+import logo from '../../images/logo-new.png';
 
 class Navigation extends Component {
   render() {
@@ -19,35 +20,35 @@ class Navigation extends Component {
                 Welcome {userName},
               </span>
             )}
-            <Link to="/about" className="nav-item nav-link p-2" >
+            <NavLink to="/about" className="nav-item nav-link p-2" >
               About
-            </Link>
-            <Link to="/contactus" className="nav-item nav-link p-2">
+            </NavLink>
+            <NavLink to="/contactus" className="nav-item nav-link p-2">
                 Contact us
-              </Link>
+              </NavLink>
               {user && (
-                <Link className="nav-item nav-link" to="/addCoach">
+                <NavLink className="nav-item nav-link" to="/addCoach">
                   Add Coach
-                </Link>
+                </NavLink>
               )}
               {!user && (
-                <Link className="nav-item nav-link" to="/login">
-                  log in
-                </Link>
+                <NavLink className="nav-item nav-link" to="/login">
+                  Log in
+                </NavLink>
               )}
               {!user && (
-                <Link className="nav-item nav-link" to="/register">
-                  register
-                </Link>
+                <NavLink className="nav-item nav-link" to="/register">
+                  Register
+                </NavLink>
               )}
               {user && (
-                <Link
+                <NavLink
                   className="nav-item nav-link"
                   to="/login"
                   onClick={e => logOutUser(e)}
                 >
                   log out
-                </Link>
+                </NavLink>
               )}
 
           </div>
