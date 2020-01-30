@@ -1,53 +1,26 @@
 import React, {Component} from 'react';
-import firebase from './Firebase';
-import FormError from './FormError';
+import firebase from '../../config/Firebase';
+import FormError from '../../components/FormError';
 import {navigate} from '@reach/router';
-import loginHeader from "../images/login-header.jpg";
+import loginHeader from "../../images/login-header.jpg";
 
-class Login extends Component {
+class Register extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
       email: '',
       password: '',
       errorMessage: null
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
   }
 
-  handleChange(e) {
-    const itemName = e.target.name;
-    const itemValue = e.target.value;
-
-    this.setState({ [itemName]: itemValue});
-  }
-
-  handleSubmit(e) {
-    var registrationInfo = {
-      email: this.state.email,
-      password: this.state.password
-    };
+  handleSubmit = (e) => {
     e.preventDefault();
-
-    firebase
-    .auth()
-    .signInWithEmailAndPassword(
-      registrationInfo.email,
-      registrationInfo.password
-    )
-    .then(() => {
-      navigate('/addCoach');
-    })
-    .catch(error => {
-      if(error.message !== null ) {
-        this.setState({ errorMessage: error.message });
-      } else {
-        this.setState ({ errorMessage: null});
-      }
-    })
+    console.log(this.state);
   }
 
   render() {
@@ -58,11 +31,6 @@ class Login extends Component {
           </div>
           <form className="mt-5" onSubmit={this.handleSubmit}>
             <div className="container">
-            {/*}<div className="row justify-content-center">
-              <div className="col-lg-12 bg-dark mt-4 mb-4">
-                <h3 className="d-block p-2 bg-dark text-white">Log in</h3>
-              </div>
-            </div>*/}
               <div className="row justify-content-center">
                 <div className="col-lg-8">
                   <div className="card text-white bg-dark">
@@ -96,6 +64,7 @@ class Login extends Component {
                           required
                           className="form-control"
                           type="password"
+                          id="password"
                           name="password"
                           placeholder="Password"
                           value={this.state.password}
@@ -118,4 +87,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;

@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-//import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //import Route from "react-router-dom/Route";
 import {Router, navigate} from '@reach/router';
-import firebase from "./components/Firebase";
+import firebase from "./config/Firebase";
 
 import "./App.css";
 import Home from "./components/Home";
+import Dashboard from './components/dashboard/Dashboard';
+import CaoachDetails from './components/coaches/CoachDetails';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+
+
 import Signupnavigation from "./components/Signupnavigation";
 import Navigation from "./components/Navigation";
 import Coaches from "./components/coaches";
@@ -13,10 +19,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { dbConfig } from "./Config";
 import About from "./components/About";
 import Aboutacoach from "./components/Aboutacoach";
-import Register from "./components/Register";
 import Contactus from "./components/Contactus";
 import Header from "./components/Header";
-import Login from "./components/Login";
 import Banner from "./components/banner";
 import Welcome from './components/Welcome';
 import Meetings from './components/Meetings';
@@ -117,6 +121,7 @@ class App extends Component {
               */}
               {this.sport1 }
 
+
                     <Router>
                       <Home path="/"
 
@@ -137,9 +142,16 @@ class App extends Component {
                         <Register
                           path="/register"
                           registerUser={this.registerUser} />
-                        <Login path="login" />
                         <Contactus path="/contactus" />
                       </Router>
+                      <BrowserRouter>
+                        <Switch>
+                          <Route exact path='/' component={Dashboard} />
+                          <Route path='/coach/:id' component={CaoachDetails} />
+                          <Route path='/login' component={Login} />
+
+                        </Switch>
+                      </BrowserRouter>
                     </div>
                     <Footer />
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import FormError from './FormError';
-import firebase from './Firebase';
-import loginHeader from "../images/register.jpg";
+import FormError from '../../components/FormError';
+import firebase from '../../config/Firebase';
+import loginHeader from "../../images/register.jpg";
 
 
 class Register extends Component {
