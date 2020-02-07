@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import FormError from '../FormError';
-import addCoachHeader from "../../images/add-coach.jpg";
-import CoachesList from '../CoachesList';
-
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createCoach } from '../../store/actions/coachActions'
+import FormError from '../FormError'
+import addCoachHeader from "../../images/add-coach.jpg"
+import CoachesList from '../CoachesList'
 
 
 class AddCoach extends Component {
@@ -29,7 +30,8 @@ class AddCoach extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
+    this.props.createCoach(this.state);
   {/*  this.props.addCoach(
       this.state.sport1,
       this.state.sport1HrlyRate,
@@ -206,4 +208,10 @@ class AddCoach extends Component {
   }
 }
 
-export default AddCoach;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createCoach: (coach) => dispatch(createCoach(coach))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddCoach);
