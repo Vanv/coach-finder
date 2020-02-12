@@ -3,6 +3,8 @@ import Banner from '../layout/Banner'
 import Notifications from './Notifications'
 import CoachList from '../coaches/CoachList'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 class Dashboard extends Component {
   render() {
@@ -30,10 +32,18 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log(state);
+
   return {
-    coaches: state.coach.coaches
+    coaches: state.firestore.ordered.coaches
   }
 }
 
 
-export default connect(mapStateToProps)(Dashboard)
+export default compose (
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'coaches' }
+  ])
+
+)(Dashboard)

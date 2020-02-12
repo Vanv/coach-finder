@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 //import Route from "react-router-dom/Route";
 import {navigate} from '@reach/router';
-import firebase from "./config/Firebase";
+import firebase from "./config/firebaseConfig";
 
 import "./App.css";
 import Home from "./components/Home";
@@ -43,17 +43,17 @@ class App extends Component {
   }
 
 
-  componentDidMount() {
-      const ref = firebase.database().ref('addcoach')
-
-      ref.orderByChild('sport1').on('child_added', snapshot => {
-        this.state.coachesList.push({
-          id: snapshot.key,
-          sport1: snapshot.val().sport1,
-
-        });
-      });
-    }
+  // componentDidMount() {
+  //     const ref = firebase.database().ref('addcoach')
+  //
+  //     ref.orderByChild('sport1').on('child_added', snapshot => {
+  //       this.state.coachesList.push({
+  //         id: snapshot.key,
+  //         sport1: snapshot.val().sport1,
+  //
+  //       });
+  //     });
+  //   }
 
   registerUser = userName => {
     firebase.auth().onAuthStateChanged(FBUser => {
