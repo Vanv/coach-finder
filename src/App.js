@@ -5,25 +5,16 @@ import {navigate} from '@reach/router';
 import firebase from "./config/firebaseConfig";
 
 import "./App.css";
-import Home from "./components/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from './components/dashboard/Dashboard';
 import CaoachDetails from './components/coaches/CoachDetails';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Navigation from "./components/layout/Navigation";
 import AddCoach from './components/coaches/AddCoach';
-
-
-
-import Coaches from "./components/coaches";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { dbConfig } from "./Config";
 import About from "./components/About";
-import Aboutacoach from "./components/Aboutacoach";
 import Contactus from "./components/Contactus";
-import Header from "./components/Header";
-import Welcome from './components/Welcome';
-import Meetings from './components/Meetings';
 import Footer from './components/Footer';
 
 

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import firebase from '../../config/firebaseConfig';
-import FormError from '../../components/FormError';
 import {navigate} from '@reach/router';
 import loginHeader from "../../images/login-header.jpg";
 import { connect } from 'react-redux'
@@ -32,7 +31,7 @@ class Login extends Component {
   render() {
     const { authError, auth } = this.props;
     if(auth.uid) return <Redirect to='/' />
-    
+
 
     return (
       <div>

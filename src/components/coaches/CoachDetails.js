@@ -11,7 +11,7 @@ const CoachDetails = (props) => {
   if(coach) {
     return (
       <div className="dashboard container">
-        <h2>CoachDetails</h2>
+        <h2 className="mt-5 mb-5 pl-4">CoachDetails</h2>
           <div className="card w-100 mb-5">
             <div className="card-body">
               <h3 className="card-title">Sport 1:  {coach.sport1}</h3>

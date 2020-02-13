@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { createCoach } from '../../store/actions/coachActions'
 import FormError from '../FormError'
 import addCoachHeader from "../../images/add-coach.jpg"
-import CoachesList from '../CoachesList'
 import { Redirect } from 'react-router-dom'
 
 class AddCoach extends Component {
@@ -192,19 +191,6 @@ class AddCoach extends Component {
             </div>
         </div>
       </form>
-      {this.props.coaches && this.props.coaches.length ? (
-        <div>
-        Coaches List
-        </div>
-      ): null}
-      {this.props.coaches && (
-          <div>
-              <CoachesList
-                userID={this.props.userID}
-                coaches={this.props.coaches} />
-          </div>
-        )
-      }
     </div>
     );
   }

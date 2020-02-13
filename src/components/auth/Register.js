@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import firebase from '../../config/firebaseConfig'
-import FormError from '../../components/FormError'
 import {navigate} from '@reach/router'
 import loginHeader from "../../images/login-header.jpg"
 import { signIn } from '../../store/actions/authActions'
