@@ -4,7 +4,7 @@ import { createCoach } from '../../store/actions/coachActions'
 import FormError from '../FormError'
 import addCoachHeader from "../../images/add-coach.jpg"
 import CoachesList from '../CoachesList'
-
+import { Redirect } from 'react-router-dom'
 
 class AddCoach extends Component {
 
@@ -53,7 +53,9 @@ class AddCoach extends Component {
     */}
   }
   render() {
+    const { auth } = this.props;
 
+    if(!auth.uid) return <Redirect to='/login' />
 
     return (
       <div>
@@ -208,10 +210,18 @@ class AddCoach extends Component {
   }
 }
 
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+
+
 const mapDispatchToProps = (dispatch) => {
   return {
     createCoach: (coach) => dispatch(createCoach(coach))
   }
 }
 
-export default connect(null, mapDispatchToProps)(AddCoach);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCoach);

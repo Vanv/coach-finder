@@ -1,8 +1,11 @@
-import React, {Component} from 'react';
-import firebase from '../../config/firebaseConfig';
-import FormError from '../../components/FormError';
-import {navigate} from '@reach/router';
-import loginHeader from "../../images/login-header.jpg";
+import React, {Component} from 'react'
+import firebase from '../../config/firebaseConfig'
+import FormError from '../../components/FormError'
+import {navigate} from '@reach/router'
+import loginHeader from "../../images/login-header.jpg"
+import { signIn } from '../../store/actions/authActions'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class Register extends Component {
 
@@ -24,6 +27,9 @@ class Register extends Component {
   }
 
   render() {
+    const { auth } = this.props;
+
+    if(auth.uid) return <Redirect to='/' />
     return (
       <div>
           <div>
@@ -142,4 +148,11 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+
+
+export default connect(mapStateToProps)(Register)
