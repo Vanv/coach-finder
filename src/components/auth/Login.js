@@ -3,14 +3,16 @@ import firebase from '../../config/firebaseConfig';
 import FormError from '../../components/FormError';
 import {navigate} from '@reach/router';
 import loginHeader from "../../images/login-header.jpg";
+import { connect } from 'react-redux'
+import { signIn } from '../../store/actions/authActions'
+
 
 class Login extends Component {
 
   state = {
       email: '',
-      password: '',
-      errorMessage: null
-    };
+      password: ''
+    }
 
   handleChange = (e) => {
     // const itemName = e.target.name;
@@ -22,33 +24,13 @@ class Login extends Component {
   }
 
   handleSubmit = (e) => {
-    // var registrationInfo = {
-    //   email: this.state.email,
-    //   password: this.state.password
-    // };
     e.preventDefault();
-    console.log(this.state);
-    {/*
-    firebase
-    .auth()
-    .signInWithEmailAndPassword(
-      registrationInfo.email,
-      registrationInfo.password
-    )
-    .then(() => {
-      navigate('/addCoach');
-    })
-    .catch(error => {
-      if(error.message !== null ) {
-        this.setState({ errorMessage: error.message });
-      } else {
-        this.setState ({ errorMessage: null});
-      }
-    })
-    */}
+    // console.log(this.state);
+    this.props.signIn(this.state);
   }
 
   render() {
+    const { authError } = this.props;
     return (
       <div>
           <div>
@@ -56,22 +38,12 @@ class Login extends Component {
           </div>
           <form className="mt-5" onSubmit={this.handleSubmit}>
             <div className="container">
-            {/*}<div className="row justify-content-center">
-              <div className="col-lg-12 bg-dark mt-4 mb-4">
-                <h3 className="d-block p-2 bg-dark text-white">Log in</h3>
-              </div>
-            </div>*/}
               <div className="row justify-content-center">
                 <div className="col-lg-8">
                   <div className="card text-white bg-dark">
                     <div className="card-body">
                       <h3 className="font-weight-light mb-3">Log in</h3>
                       <section className="form-group">
-                        {this.state.errorMessage !== null ? (
-                          <FormError
-                            theMessage={this.state.errorMessage}
-                          />
-                        ) : null}
                         <label
                           className="form-control-label sr-only"
                           htmlFor="Email"
@@ -105,7 +77,13 @@ class Login extends Component {
                         <button className="btn btn-primary" type="submit">
                           Log in
                         </button>
+
                       </div>
+                      <div className="text-danger text-center">
+                        { authError ? <p>{authError}</p> : null }
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
@@ -117,4 +95,18 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError
+  }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (credentials) => dispatch(signIn(credentials))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

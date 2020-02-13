@@ -93,6 +93,19 @@ nav.top-nav-bg {
 .jumbotron {
   margin-bottom: 0px !important;
 }
+.coachList a {
+
+  color: #000 ;
+}
+.coachList a:hover {
+  text-decoration: none;
+  color: #3372a7;
+}
+.navbar-nav a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

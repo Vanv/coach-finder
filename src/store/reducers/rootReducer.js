@@ -2,13 +2,15 @@ import authReducer from './authReducer'
 import coachesReducer from './coachesReducer'
 import{ combineReducers } from 'redux'
 import { firestoreReducer } from 'redux-firestore'
+import { firebaseReducer } from 'react-redux-firebase'
 
 
 
 const rootReducer = combineReducers({
   auth: authReducer,
   coach: coachesReducer,
-  firestore: firestoreReducer
+  firestore: firestoreReducer,
+  firebase: firebaseReducer
 })
 
 
