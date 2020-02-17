@@ -20,6 +20,7 @@ const CoachDetails = (props) => {
               <p>Hourly: ${coach.sport2HrlyRate}</p>
               <p>Coach Name: {coach.authorFirstName} {coach.authorLastName}</p>
               <p className="card-text">{coach.shortDescription}</p>
+              <p><b>Email: </b>{coach.email}</p>
             </div>
           </div>
       </div>

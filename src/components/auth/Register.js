@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import firebase from '../../config/firebaseConfig'
 import {navigate} from '@reach/router'
 import loginHeader from "../../images/login-header.jpg"
-import { signIn } from '../../store/actions/authActions'
+import { signIn, register } from '../../store/actions/authActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
@@ -11,7 +11,9 @@ class Register extends Component {
   state = {
       email: '',
       password: '',
-      errorMessage: null
+      firstName: '',
+      lastName: ''
+      // errorMessage: null
     };
 
   handleChange = (e) => {
@@ -22,11 +24,12 @@ class Register extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
+    this.props.register(this.state);
   }
 
   render() {
-    const { auth } = this.props;
+    const { auth, authError } = this.props;
 
     if(auth.uid) return <Redirect to='/' />
     return (
@@ -135,6 +138,9 @@ class Register extends Component {
                       <button className="btn btn-light" type="submit">
                         Register
                       </button>
+                      <div className="text-danger text-center">
+                        { authError ? <p>{authError}</p> : null }
+                      </div>
                     </div>
                     </div>
                   </div>
@@ -149,9 +155,15 @@ class Register extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    authError: state.auth.authError
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    register: (newUser) => dispatch(register(newUser))
+  }
+}
 
-export default connect(mapStateToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

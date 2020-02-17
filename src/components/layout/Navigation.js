@@ -5,15 +5,20 @@ import { Link } from '@reach/router'
 import logo from '../../images/logo-new.png'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
+import CoachPersonalDetails from '../coaches/CoachPersonalDetails'
 import { connect } from 'react-redux'
 
 
 const Navigation = (props) => {
 
-    const { auth } = props;
+    const { auth, profile } = props;
     // console.log(auth);
 
-    const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+    const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
+    const getInitials = auth. uid ? <NavLink to="/coachpersonaldetails" className="nav-item nav-link p-2">
+      {profile.initials}
+      </NavLink> : null
+
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark top-nav-bg">
         <div className="container">
@@ -30,6 +35,10 @@ const Navigation = (props) => {
             <NavLink to="/contactus" className="nav-item nav-link p-2">
                 Contact us
               </NavLink>
+              {getInitials}
+
+
+
           </div>
         </div>
       </nav>
@@ -39,7 +48,8 @@ const Navigation = (props) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   }
 }
 

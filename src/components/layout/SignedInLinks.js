@@ -9,6 +9,7 @@ const SignedInLinks = (props) => {
         <NavLink className="nav-item nav-link" to="/addCoach">
           Add Coach
         </NavLink>
+
         <a onClick={props.signOut } className="nav-item nav-link">Log out</a>
     </div>
   )

@@ -8,6 +8,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from './components/dashboard/Dashboard';
 import CaoachDetails from './components/coaches/CoachDetails';
+import CoachPersonalDetails from './components/coaches/CoachPersonalDetails';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Navigation from "./components/layout/Navigation";
@@ -139,6 +140,7 @@ class App extends Component {
                           <Route path='/login' component={Login} />
                           <Route path='/register' component={Register} />
                           <Route path='/addCoach' component={AddCoach} />
+                          <Route path='/coachpersonaldetails' component={CoachPersonalDetails} />
                           <Route path='/about' component={About} />
                           <Route path='/contactus' component={Contactus} />
                         </Switch>
