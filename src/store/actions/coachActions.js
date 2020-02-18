@@ -8,8 +8,8 @@ export const createCoach = (coach) => {
 
     firestore.collection('coaches').add({
       ...coach,
-      authorFirstName: profile.firstName,
-      authorLastName: profile.lastName,
+      coachFirstName: profile.firstName,
+      coachLastName: profile.lastName,
       email: email,
       coachId: authorId,
       createdAt: new Date()

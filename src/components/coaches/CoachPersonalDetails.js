@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 
 class CoachPersonalDetails extends Component {
   render() {
-    const { profile } = this.props;
+    const { auth, profile } = this.props;
     return (
       <div className="container mt-5">
         <h4>Personal Details</h4>
         <b>First Name</b>: {profile.firstName} <br/>
         <b>Last Name</b>: {profile.lastName} <br/>
-        <b>Email:</b> {profile.email}
+        <b>Email:</b> {auth.email}
       </div>
     )
   }
@@ -17,7 +17,8 @@ class CoachPersonalDetails extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    auth: state.firebase.auth
   }
 }
 

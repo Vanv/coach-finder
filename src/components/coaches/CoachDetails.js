@@ -18,7 +18,7 @@ const CoachDetails = (props) => {
               <p>Hourly: ${coach.sport1HrlyRate}</p>
               <h4>Sport 2: {coach.sport2}</h4>
               <p>Hourly: ${coach.sport2HrlyRate}</p>
-              <p>Coach Name: {coach.authorFirstName} {coach.authorLastName}</p>
+              <p>Coach Name: {coach.coachFirstName} {coach.coachLastName}</p>
               <p className="card-text">{coach.shortDescription}</p>
               <p><b>Email: </b>{coach.email}</p>
             </div>

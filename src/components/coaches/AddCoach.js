@@ -31,25 +31,7 @@ class AddCoach extends Component {
     e.preventDefault();
     // console.log(this.state);
     this.props.createCoach(this.state);
-  {/*  this.props.addCoach(
-      this.state.sport1,
-      this.state.sport1HrlyRate,
-      this.state.sport2,
-      this.state.sport2HrlyRate,
-      this.state.location,
-      this.state.otherAreas,
-      this.state.shortDescription
-    );
-    this.setState({
-      sport1: '',
-      sport1HrlyRate: '',
-      sport2: '',
-      sport2HrlyRate: '',
-      location: '',
-      otherAreas:'',
-      shortDescription: ''
-    });
-    */}
+    this.props.history.push('/');
   }
   render() {
     const { auth } = this.props;
