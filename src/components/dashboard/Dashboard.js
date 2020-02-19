@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Banner from '../layout/Banner'
-import Notifications from './Notifications'
+import RecentActivities from './RecentActivities'
 import CoachList from '../coaches/CoachList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
@@ -22,7 +22,7 @@ class Dashboard extends Component {
               <CoachList coaches={coaches}/>
               </div>
               <div className="col-sm-4">
-                <Notifications />
+                <RecentActivities />
               </div>
             </div>
           </div>
