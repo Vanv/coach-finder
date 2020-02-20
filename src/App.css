@@ -47,15 +47,15 @@ body {
 }
 ul {
 
-  display: table;
+  /* display: table; */
   width: 100%;
   list-style: none;
 }
 li {
   list-style-type: none;
-  display: inline-block;
-  display: table-cell;
-  text-align: center;
+  /* display: inline-block; */
+  /* display: table-cell; */
+  /* text-align: center; */
 }
 .home-container {
   padding-left: 0px !important;
@@ -110,7 +110,9 @@ nav.top-nav-bg {
   cursor: pointer;
   text-decoration: underline;
 }
-
+.newIcon {
+  font-size: 20px;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
