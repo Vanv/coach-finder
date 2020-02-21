@@ -7,9 +7,8 @@ const CoachList = ({coaches}) => {
     <div className="section coachList">
       { coaches && coaches.map(coach => {
         return (
-          <Link to={'/coach/' + coach.id} key={coach.id}>
-            <CoachSummary coach={coach}  />
-          </Link>
+            <CoachSummary coach={coach} key={coach.id} />
+
         )
       })}
     </div>

@@ -75,7 +75,7 @@ li {
 .inputLabel {
   width: 150px;
 }
-nav.top-nav-bg {
+.top-nav-bg, .bg-dark {
   background-color: #01233f !important;
 }
 .initials {
@@ -89,6 +89,9 @@ nav.top-nav-bg {
 .signup {
   display: inline-flex;
 }
+.menu-toggle {
+  color: #fff;
+}
 .navbar-nav a {
   color: #fff !important;
 }
@@ -98,13 +101,13 @@ nav.top-nav-bg {
 .jumbotron {
   margin-bottom: 0px !important;
 }
-.coachList a {
-
+/* .coachList a {
   color: #000 ;
-}
+} */
 .coachList a:hover {
   text-decoration: none;
-  color: #3372a7;
+  background-color: #fff;
+  color: #01233f;
 }
 .navbar-nav a:hover {
   cursor: pointer;
@@ -120,6 +123,9 @@ nav.top-nav-bg {
 @media (max-width: 639px) {
   .nav li {
     display: block;
+  }
+  .bannerText {
+    display: none;
   }
 }
 

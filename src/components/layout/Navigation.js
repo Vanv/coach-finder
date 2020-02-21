@@ -7,7 +7,7 @@ import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import CoachPersonalDetails from '../coaches/CoachPersonalDetails'
 import { connect } from 'react-redux'
-
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const Navigation = (props) => {
 
@@ -20,28 +20,36 @@ const Navigation = (props) => {
       </NavLink> : null
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark top-nav-bg">
-        <div className="container">
-          <a className="blog-header-logo text-dark" href="/">
-            <img src={logo} alt="Coach Finder" />
-          </a>
-          <div className="navbar-nav ml-auto">
+      <div className="top-nav-bg">
+          <div className="container">
+          <Navbar collapseOnSelect expand="lg" variant="dark">
+            <Navbar.Brand href="/">
+              <img src={logo} alt="Coach Finder" className="img-fluid" />
+            </Navbar.Brand>
 
-            <NavLink to="/about" className="nav-item nav-link p-2" >
-              About
-            </NavLink>
-            { links }
-
-            <NavLink to="/contactus" className="nav-item nav-link p-2">
-                Contact us
-              </NavLink>
-              {getInitials}
+              <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="navbar-toggler navbar-toggler-right"/>
+            
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="ml-auto">
+                <Nav.Link href="#features"></Nav.Link>
 
 
+              </Nav>
+              <Nav className="navbar-right mr-auto">
+              <Nav.Link href="/about" className="nav-item nav-link p-2" >
+                About
+              </Nav.Link>
+              { links }
 
-          </div>
+              <Nav.Link href="/contactus" className="nav-item nav-link p-2">
+                  Contact us
+                </Nav.Link>
+                {getInitials}
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </div>
-      </nav>
+      </div>
     );
 }
 

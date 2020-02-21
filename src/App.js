@@ -12,6 +12,7 @@ import CoachPersonalDetails from './components/coaches/CoachPersonalDetails';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Navigation from "./components/layout/Navigation";
+import Navbar from "./components/layout/Navbar";
 import AddCoach from './components/coaches/AddCoach';
 import { dbConfig } from "./Config";
 import About from "./components/About";
@@ -97,11 +98,8 @@ class App extends Component {
 
 <BrowserRouter>
           <div className="container-fluid px-0">
-             <Navigation
-                user={this.state.user}
-                userName={this.state.displayName}
-                logOutUser={this.logOutUser}
-              />
+          <Navigation />
+
               {/*
               {this.state.user && (
                 <Welcome
