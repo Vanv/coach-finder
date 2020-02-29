@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+
 //import Route from "react-router-dom/Route";
 import {navigate} from '@reach/router';
 import firebase from "./config/firebaseConfig";
@@ -12,7 +15,6 @@ import CoachPersonalDetails from './components/coaches/CoachPersonalDetails';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Navigation from "./components/layout/Navigation";
-import Navbar from "./components/layout/Navbar";
 import AddCoach from './components/coaches/AddCoach';
 import { dbConfig } from "./Config";
 import About from "./components/About";
@@ -34,19 +36,6 @@ class App extends Component {
       sport1: ''
     };
   }
-
-
-  // componentDidMount() {
-  //     const ref = firebase.database().ref('addcoach')
-  //
-  //     ref.orderByChild('sport1').on('child_added', snapshot => {
-  //       this.state.coachesList.push({
-  //         id: snapshot.key,
-  //         sport1: snapshot.val().sport1,
-  //
-  //       });
-  //     });
-  //   }
 
   registerUser = userName => {
     firebase.auth().onAuthStateChanged(FBUser => {
@@ -96,8 +85,9 @@ class App extends Component {
   render() {
     return (
 
-<BrowserRouter>
+  <BrowserRouter>
           <div className="container-fluid px-0">
+
           <Navigation />
 
               {/*
@@ -108,15 +98,7 @@ class App extends Component {
                 />
               )}
               */}
-              {/*
-                    <Router>
-                      <Home path="/"
 
-                        user={this.state.user}
-                      />
-
-                    </Router>
-                  */}
                     <div className="container-fluid home-container">
                     {/*
                       <Router>
@@ -131,22 +113,24 @@ class App extends Component {
                           registerUser={this.registerUser} />
                       </Router>
                       */}
-
                         <Switch>
+                        <Route path='/about' component={About} />
+                        <Route path='/contactus' component={Contactus} />
                           <Route exact path='/' component={Dashboard} />
                           <Route path='/coach/:id' component={CaoachDetails} />
                           <Route path='/login' component={Login} />
                           <Route path='/register' component={Register} />
                           <Route path='/addCoach' component={AddCoach} />
                           <Route path='/coachpersonaldetails' component={CoachPersonalDetails} />
-                          <Route path='/about' component={About} />
-                          <Route path='/contactus' component={Contactus} />
-                        </Switch>
-                    </div>
-                    <Footer />
 
+                        </Switch>
+
+                    </div>
+
+                    <Footer />
             </div>
             </BrowserRouter>
+
 
     );
   }

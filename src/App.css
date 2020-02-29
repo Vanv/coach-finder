@@ -127,8 +127,15 @@ li {
   .bannerText {
     display: none;
   }
+  .navbar-collapse {
+    text-align: center;
+  }
 }
-
+@media (min-width: 893px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+}
 .footer {
   backgroundColor: "purple";
  fontSize: "20px";

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import aboutus from "../images/about-us.png";
-
+import {navigate} from '@reach/router'
 
 class About extends Component {
   render() {

@@ -1,6 +1,5 @@
 {
   "name": "coach-finder",
-  "homepage": "http://www.urcoachfinder.com/",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

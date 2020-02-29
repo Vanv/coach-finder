@@ -28,22 +28,22 @@ const Navigation = (props) => {
             </Navbar.Brand>
 
               <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="navbar-toggler navbar-toggler-right"/>
-            
+
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ml-auto">
-                <Nav.Link href="#features"></Nav.Link>
+                <NavLink to="#features"></NavLink>
 
 
               </Nav>
               <Nav className="navbar-right mr-auto">
-              <Nav.Link href="/about" className="nav-item nav-link p-2" >
+              <NavLink to="/about" className="nav-item nav-link p-2" >
                 About
-              </Nav.Link>
+              </NavLink>
               { links }
 
-              <Nav.Link href="/contactus" className="nav-item nav-link p-2">
+              <NavLink to="/contactus" className="nav-item nav-link p-2">
                   Contact us
-                </Nav.Link>
+                </NavLink>
                 {getInitials}
               </Nav>
             </Navbar.Collapse>

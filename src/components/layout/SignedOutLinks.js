@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const SignedOutLinks = (props) => {
   return(
-    <div className="navbar-nav ml-auto">
+    <div className="navbar-nav pl-2">
 
       <NavLink className="nav-item nav-link" to="/login">
         Log in

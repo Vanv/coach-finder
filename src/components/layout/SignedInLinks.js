@@ -8,9 +8,9 @@ const SignedInLinks = (props) => {
   return(
 
 <React.Fragment>
-        <Nav.Link href="/addCoach" className="nav-item nav-link p-2" >
+        <NavLink to="/addCoach" className="nav-item nav-link p-2" >
           Add Coach
-        </Nav.Link>
+        </NavLink>
 
         <a onClick={props.signOut } className="nav-item nav-link pl-2">Log out</a>
     </React.Fragment>
