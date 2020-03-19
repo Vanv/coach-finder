@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { ThemeContext } from '../../contexts/ThemeContext'
-import ThemeToggle from '../ThemeToggle';
 
 
 class Dashboard extends Component {
@@ -25,8 +24,6 @@ class Dashboard extends Component {
                     <div className="row">
                       <div className="col-sm-8">
                       <h2>Dashboard</h2>
-                      <ThemeToggle />
-
                           <CoachList coaches={coaches}/>
                       </div>
                       <div className="col-sm-4">

@@ -7,10 +7,13 @@ class ThemeToggle extends Component {
   static contextType = ThemeContext;
 
   render() {
-    const { colorTheme } = this.context;
+    const { colorTheme, isLightTheme } = this.context;
+    const btnText = isLightTheme ? 'Dark Theme' : 'Light Theme'
     return(
       <div className="text-right">
-        <button className="btn btn-secondary btn-sm ml-2" onClick={colorTheme}>Color Theme </button>
+        <button className="btn btn-secondary btn-sm ml-2" onClick={colorTheme}>
+        { btnText}
+         </button>
       </div>
     )
   }

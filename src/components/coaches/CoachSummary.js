@@ -8,10 +8,11 @@ import { ThemeContext } from '../../contexts/ThemeContext'
 const CoachSummary = ({ coach }) => {
     return (
       <ThemeContext.Consumer>{(context) => {
-        const { isLightTheme, light, dark } = context;
+        const { isLightTheme, light, dark, darkThemeText } = context;
         const theme = isLightTheme ? light : dark ;
+
         return(
-          <div className="dashboard mt-4">
+          <div className="dashboard mt-3">
             <div className="card w-100 mb-4">
               <div className="card-body" style={{ background: theme.ui, color: theme.syntax}}>
                 <h5 style={{background: theme.ui}}><b>Coach Name: </b>{coach.coachFirstName} {coach.coachLastName}</h5>
@@ -22,7 +23,7 @@ const CoachSummary = ({ coach }) => {
                 <p style={{background: theme.ui}}>{moment(coach.createdAt.toDate()).calendar()}</p>
                 <div className="text-right">
 
-                  <a href={"mailto:" + coach.email} className="btn btn-dark btn-sm"><IoIosMail /></a>
+                  <a style={{ background: theme.emailBtn }} href={"mailto:" + coach.email} className="btn btn-dark btn-sm"><IoIosMail /></a>
                   <Link to={'/coach/' + coach.id} key={coach.id}>
                     <button type="button" className="btn btn-info btn-sm ml-2">Read More</button>
                   </Link>
