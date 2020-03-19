@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from './components/dashboard/Dashboard';
 import CaoachDetails from './components/coaches/CoachDetails';
 import CoachPersonalDetails from './components/coaches/CoachPersonalDetails';
+import CoachEdit from './components/coaches/CoachEdit';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Navigation from "./components/layout/Navigation";
@@ -20,7 +21,7 @@ import { dbConfig } from "./Config";
 import About from "./components/About";
 import Contactus from "./components/Contactus";
 import Footer from './components/Footer';
-
+import ThemeContextProvider from './contexts/ThemeContext';
 
 class App extends Component {
   constructor() {
@@ -113,6 +114,7 @@ class App extends Component {
                           registerUser={this.registerUser} />
                       </Router>
                       */}
+                      <ThemeContextProvider>
                         <Switch>
                         <Route path='/about' component={About} />
                         <Route path='/contactus' component={Contactus} />
@@ -121,9 +123,11 @@ class App extends Component {
                           <Route path='/login' component={Login} />
                           <Route path='/register' component={Register} />
                           <Route path='/addCoach' component={AddCoach} />
+                          <Route path='/coachedit' component={CoachEdit} />
                           <Route path='/coachpersonaldetails' component={CoachPersonalDetails} />
-
                         </Switch>
+                      </ThemeContextProvider>
+
 
                     </div>
 

@@ -5,29 +5,38 @@ import CoachList from '../coaches/CoachList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { ThemeContext } from '../../contexts/ThemeContext'
+import ThemeToggle from '../ThemeToggle';
+
 
 class Dashboard extends Component {
+
+  // static contextType = ThemeContext;
   render() {
     console.log(this.props);
     const { coaches, recentactivities } = this.props;
+    console.log(this.context);
     return (
-      <div>
-          <div className="container-fluid px-0">
-            <Banner />
-          </div>
-          <div className="dashboard container mt-5">
-            <div className="row">
-              <div className="col-sm-8">
-              <h2>Dashboard</h2>
-              <CoachList coaches={coaches}/>
+              <div>
+                  <div className="container-fluid px-0">
+                    <Banner />
+                  </div>
+                  <div className="dashboard container mt-5">
+                    <div className="row">
+                      <div className="col-sm-8">
+                      <h2>Dashboard</h2>
+                      <ThemeToggle />
+
+                          <CoachList coaches={coaches}/>
+                      </div>
+                      <div className="col-sm-4">
+                        <RecentActivities recentactivities={recentactivities}/>
+                      </div>
+                    </div>
+                  </div>
               </div>
-              <div className="col-sm-4">
-                <RecentActivities recentactivities={recentactivities}/>
-              </div>
-            </div>
-          </div>
-      </div>
-    )
+            )
+
   }
 }
 

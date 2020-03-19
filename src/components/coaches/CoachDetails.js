@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Link } from 'react-router-dom'
+
 
 const CoachDetails = (props) => {
   // const id = props.match.params.id;
   // console.log(props);
   const { coach } = props;
-
   if(coach) {
     return (
       <div className="dashboard container">
@@ -21,6 +22,10 @@ const CoachDetails = (props) => {
               <p>Coach Name: {coach.coachFirstName} {coach.coachLastName}</p>
               <p className="card-text">{coach.shortDescription}</p>
               <p><b>Email: </b>{coach.email}</p>
+
+              <Link to={'/coachedit/' + coach.id} key={coach.id}>
+                <button type="button" className="btn btn-info btn-sm ml-2">Edit</button>
+              </Link>
             </div>
           </div>
       </div>
