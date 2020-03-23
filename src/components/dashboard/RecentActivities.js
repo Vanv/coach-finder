@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import { MdLocalActivity } from 'react-icons/md'
 import { ThemeContext } from '../../contexts/ThemeContext'
-import ThemeToggle from '../ThemeToggle'
 
 
 const RecentActivities = (props) => {
@@ -13,10 +12,9 @@ const RecentActivities = (props) => {
         const theme = isLightTheme ? light : dark;
         return(
           <div className="section">
-            <ThemeToggle />
+            <h2 className="card-title">Recent Activities</h2>
             <div className="card w-100  mt-4 mb-5">
               <div className="card-body" style={{ background: theme.ui, color: theme.syntax}}>
-                <h3 className="card-title">Recent Activities</h3>
                   <ul className="recentActivities list-unstyled">
                     { recentactivities && recentactivities.map(item => {
                       return (
